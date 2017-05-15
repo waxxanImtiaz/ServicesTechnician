@@ -1,0 +1,86 @@
+# Turn rewrite engine on
+Options 
+RewriteEngine on
+
+# map neat URL to internal URL
+
+# Get all products
+RewriteRule ^get/products/$   RestController.php?view=products [nc,qsa]
+
+# Get cities
+RewriteRule ^get/cities/$   RestController.php?view=cities [nc,qsa]
+
+# Get units
+RewriteRule ^get/units/$   RestController.php?view=units [nc,qsa]
+
+# Get areas
+RewriteRule ^get/areas/$   RestController.php?view=areas [nc,qsa]
+
+# Get areas
+RewriteRule ^get/price/$   RestController.php?view=price [nc,qsa]
+# Get cart data
+RewriteRule ^get/cart/(.*)/(.*)/$   RestController.php?view=cart&userId=$1&flag=$2 [nc,qsa]
+
+# Post cart item
+RewriteRule ^post/cart/$  RestController.php [nc,qsa]
+
+# Delete cart item
+RewriteRule ^delete/cart/(.*)/$  RestController.php?view=cartitem&cartId=$1 [nc,qsa]
+
+# Get subcategories
+RewriteRule ^get/subcategories/$   RestController.php?view=subcategories [nc,qsa]
+
+# Get categories
+RewriteRule ^get/categories/$   RestController.php?view=categories [nc,qsa]
+
+# get image by name and extension
+ RewriteRule ^get/image/$   RestController.php [NC,L]   
+ 
+# get wish list by user id
+ RewriteRule ^get/wishlist/(.*)/$   RestController.php?view=getwishlist&id=$1 [NC,L]  
+
+ # submit order
+  RewriteRule ^order/submit/(.*)/(.*)/(.*)/(.*)/(.*)/$   RestController.php?view=orderdata&id=$1&subTotal=$2&grandTotal=$3&payMethod=$4&orderType=$5 [NC,L]   
+ 
+# add item to wish list by user id and product id
+ RewriteRule ^put/wishlist/$   RestController.php [NC,L]   
+  
+
+# Delete wish list item
+RewriteRule ^delete/wish/(.*)/$  RestController.php?view=wishitem&id=$1 [nc,qsa]  
+  
+# Get customer by email and password
+  RewriteRule ^login/customer/([a-zA-Z.@]+)/([a-zA-Z0-9]+)/$   RestController.php?view=customer&email=$1&password=$2 [NC,L]   
+
+# RewriteRule ^post/(.*)$  ./RestController.php?view=post [NC,L]
+# RewriteRule method RestController.php [NC,L]
+ 
+ 
+
+# Add new customer 
+ RewriteRule ^put/customer/(.*)/(.*)/(.*)/(.*)/(.*)/(.*)/(.*)/(.*)/$   RestController.php?view=add&name=$1&email=$2&password=$3&gender=$4&mobileNumber=$5&customerArea=$6&shippingAddress=$7&address=$8  [NC,L]   
+# Update new customer 
+ RewriteRule ^update/customer/$   RestController.php [nc,qsa]
+# Insert data into shopping list 
+RewriteRule ^insert/list/$   RestController.php [nc,qsa]
+# Get list
+RewriteRule ^get/list/(.*)/(.*)/$   RestController.php?view=getShoppingList&listType=$1&userId=$2 [nc,qsa]
+  
+ # Delete  list item
+RewriteRule ^delete/list/(.*)/$  RestController.php?view=deleteList&shopId=$1 [nc,qsa]  
+
+# Get offer list
+RewriteRule ^get/offer/$  RestController.php?view=getoffers [nc,qsa]	
+
+# Get offer list
+RewriteRule ^get/offer/list/(.*)/$  RestController.php?view=offerList&offerId=$1 [nc,qsa]	
+
+
+# card
+
+# Get cards
+RewriteRule ^get/card/$  RestController.php?view=getcard [nc,qsa]	
+
+
+# Get cards balance
+RewriteRule ^get/balance/(.*)/$  RestController.php?view=getcardbalance&id=$1 [nc,qsa]	
